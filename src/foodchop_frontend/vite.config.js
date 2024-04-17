@@ -1,4 +1,3 @@
-/// <reference types="vitest" />
 import { fileURLToPath, URL } from 'url';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
@@ -10,6 +9,10 @@ dotenv.config({ path: '../../.env' });
 export default defineConfig({
   build: {
     emptyOutDir: true,
+    rollupOptions: {
+      // Specify external dependencies to prevent Rollup from bundling them
+      external: ['react-icons']
+    }
   },
   optimizeDeps: {
     esbuildOptions: {
